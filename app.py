@@ -12,7 +12,7 @@ from sentence_transformers import SentenceTransformer,util
 import openai
 
 with st.sidebar:
-    st.title('🤗💬 LLM Chat App')
+    st.title('🤗💬 Smart Guru')
     st.markdown('''
     ## About
     This app is an LLM-powered chatbot built using:
@@ -49,19 +49,19 @@ def main():
  
         # # embeddings
         store_name = pdf.name[:-4]
-        st.write(f'{store_name}')
+        #st.write(f'{store_name}')
         # st.write(chunks)
  
-        """if os.path.exists(f"{store_name}.pkl"):
-            with open(f"{store_name}.pkl", "rb") as f:
-                VectorStore = pickle.load(f)
-            # st.write('Embeddings Loaded from the Disk')s
-        else:
-            embeddings = OpenAIEmbeddings()
-            VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
-            save_data = {'faiss_index': VectorStore._index, 'other_data': VectorStore._other_data}
-            with open(f"{store_name}.pkl", "wb") as f:
-                pickle.dump(save_data, f)"""
+        # """if os.path.exists(f"{store_name}.pkl"):
+        #     with open(f"{store_name}.pkl", "rb") as f:
+        #         VectorStore = pickle.load(f)
+        #     # st.write('Embeddings Loaded from the Disk')s
+        # else:
+        #     embeddings = OpenAIEmbeddings()
+        #     VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
+        #     save_data = {'faiss_index': VectorStore._index, 'other_data': VectorStore._other_data}
+        #     with open(f"{store_name}.pkl", "wb") as f:
+        #         pickle.dump(save_data, f)"""
  
         embeddings1 = OpenAIEmbeddings()
         VectorStore = FAISS.from_texts(chunks, embedding=embeddings1)
@@ -78,12 +78,15 @@ def main():
             with get_openai_callback() as cb:
                 response = chain.run(input_documents=docs, question=query)
                 print(cb)
-            st.write(response)
+            #st.write(response)
             user_answer = st.text_input("Enter your Answer:")
-            actual_answer = response
+            
+            
             if user_answer:
                 #sentences = [actual_answer,user_answer]
-
+                st.write("Model Answer:-")
+                st.write(response)
+                actual_answer = response
                 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
                 #embeddings = model.encode(sentences)
                 actual_answer_embeddings = model.encode([actual_answer], convert_to_tensor=True)
