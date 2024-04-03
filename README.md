@@ -20,7 +20,7 @@ Smart Guru is an interactive chatbot designed to help students extract informati
 
 ## Usage
 1. Install the required packages by running `pip install -r requirements.txt`.
-2. Set up your OpenAI API key in the `main.py` file.
+2. Set up your OpenAI API key in the `main.py` and `.env` file.
 3. Run the Streamlit app by executing `streamlit run main.py` in your terminal.
 4. Upload your PDF document and ask questions about it.
 5. Get model-generated answers and feedback on your input.
