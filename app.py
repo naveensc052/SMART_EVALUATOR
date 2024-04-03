@@ -95,7 +95,7 @@ def main():
 
                 st.write(f"Similarity Score: {similarity_scores[0][0].item()}")
 
-                openai.api_key = "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"
+                openai.api_key = "ENTER_YOR_OPENAI_API_KEY"
                 prompt = f"""You have to give missing points to a baed only on the user-generated answer based on the following information:
                 -This is the question the user tried to answer: {user_answer}
                 -This is the correct answer: {actual_answer},
